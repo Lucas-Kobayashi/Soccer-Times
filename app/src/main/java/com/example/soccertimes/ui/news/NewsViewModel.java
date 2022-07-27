@@ -1,9 +1,13 @@
 package com.example.soccertimes.ui.news;
 
+import android.app.Application;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import androidx.room.Room;
 
+import com.example.soccertimes.data.local.AppDatabase;
 import com.example.soccertimes.data.remote.SoccerNewsApi;
 import com.example.soccertimes.domain.News;
 
@@ -27,6 +31,7 @@ public class NewsViewModel extends ViewModel {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(SoccerNewsApi.class);
+
         this.findNews();
     }
 
